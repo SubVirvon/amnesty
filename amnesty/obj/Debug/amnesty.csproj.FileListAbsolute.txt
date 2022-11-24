@@ -1,0 +1,8 @@
+C:\Users\Danii\source\repos\amnesty\amnesty\bin\Debug\amnesty.exe.config
+C:\Users\Danii\source\repos\amnesty\amnesty\bin\Debug\amnesty.exe
+C:\Users\Danii\source\repos\amnesty\amnesty\bin\Debug\amnesty.pdb
+C:\Users\Danii\source\repos\amnesty\amnesty\obj\Debug\amnesty.csproj.AssemblyReference.cache
+C:\Users\Danii\source\repos\amnesty\amnesty\obj\Debug\amnesty.csproj.SuggestedBindingRedirects.cache
+C:\Users\Danii\source\repos\amnesty\amnesty\obj\Debug\amnesty.csproj.CoreCompileInputs.cache
+C:\Users\Danii\source\repos\amnesty\amnesty\obj\Debug\amnesty.exe
+C:\Users\Danii\source\repos\amnesty\amnesty\obj\Debug\amnesty.pdb
