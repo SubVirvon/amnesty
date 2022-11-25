@@ -10,51 +10,61 @@ namespace amnesty
     {
         static void Main(string[] args)
         {
-            Controller controller = new Controller();
-
-            controller.Work();
-        }
-    }
-
-    class Controller
-    {
-        private List<Person> _database;
-
-        public Controller()
-        {
-            _database = new List<Person>() { new Person("Игорь", "антиправительственное"), new Person("Глеб", "разбой"), new Person("Степан", "антиправительственное"), new Person("Игорь", "мошенничество") };
-        }
-
-        public void Work()
-        {
-            ShowDatabase(_database);
-            Console.WriteLine();
-
-            var amnestyDatabase = _database.Where(person => person.Crime != "антиправительственное").ToList();
-            _database = amnestyDatabase;
-
-            ShowDatabase(_database);
-            Console.ReadKey();
-        }
-
-        private void ShowDatabase (List<Person> database)
-        {
-            foreach(var person in database)
+            DataBase dataBase = new DataBase(new List<Person>()
             {
-                Console.WriteLine($"{person.Name}, преступление: {person.Crime}");
-            }
+                new Person("Игорь", Crime.антиправительственное),
+                new Person("Глеб", Crime.разбой),
+                new Person("Степан", Crime.антиправительственное),
+                new Person("Игорь", Crime.мошенничество)
+            });
+
+            dataBase.ShowInfo();
+            Console.WriteLine();
+            dataBase.Amnesty(Crime.антиправительственное);
+            dataBase.ShowInfo();
+            Console.ReadKey();
         }
     }
 
     class Person
     {
         public string Name { get; private set; }
-        public string Crime { get; private set; }
+        public Crime Crime { get; private set; }
 
-        public Person(string name, string crime)
+        public Person(string name, Crime crime)
         {
             Name = name;
             Crime = crime;
         }
+    }
+
+    class DataBase
+    {
+        private List<Person> _database;
+
+        public DataBase(List<Person> database)
+        {
+            _database = database;
+        }
+
+        public void Amnesty(Crime crime)
+        {
+            _database = _database.Where(person => person.Crime != crime).ToList();
+        }
+
+        public void ShowInfo()
+        {
+            foreach (var person in _database)
+            {
+                Console.WriteLine($"{person.Name}, преступление: {person.Crime}");
+            }
+        }
+    }
+
+    enum Crime
+    {
+        антиправительственное,
+        разбой,
+        мошенничество
     }
 }
