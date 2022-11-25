@@ -10,7 +10,7 @@ namespace amnesty
     {
         static void Main(string[] args)
         {
-            DataBase dataBase = new DataBase(new List<Person>()
+            Database dataBase = new Database(new List<Person>()
             {
                 new Person("Игорь", Crime.антиправительственное),
                 new Person("Глеб", Crime.разбой),
@@ -20,7 +20,7 @@ namespace amnesty
 
             dataBase.ShowInfo();
             Console.WriteLine();
-            dataBase.Amnesty(Crime.антиправительственное);
+            dataBase.GiveAmnesty(Crime.антиправительственное);
             dataBase.ShowInfo();
             Console.ReadKey();
         }
@@ -38,23 +38,23 @@ namespace amnesty
         }
     }
 
-    class DataBase
+    class Database
     {
-        private List<Person> _database;
+        private List<Person> _persons;
 
-        public DataBase(List<Person> database)
+        public Database(List<Person> database)
         {
-            _database = database;
+            _persons = database;
         }
 
-        public void Amnesty(Crime crime)
+        public void GiveAmnesty(Crime crime)
         {
-            _database = _database.Where(person => person.Crime != crime).ToList();
+            _persons = _persons.Where(person => person.Crime != crime).ToList();
         }
 
         public void ShowInfo()
         {
-            foreach (var person in _database)
+            foreach (var person in _persons)
             {
                 Console.WriteLine($"{person.Name}, преступление: {person.Crime}");
             }
